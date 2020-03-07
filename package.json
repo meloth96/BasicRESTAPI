@@ -1,0 +1,19 @@
+{
+  "name": "basicrestapi",
+  "version": "1.0.0",
+  "description": "Basic example of a REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meloth96/BasicRESTAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meloth96/BasicRESTAPI/issues"
+  },
+  "homepage": "https://github.com/meloth96/BasicRESTAPI#readme"
+}
