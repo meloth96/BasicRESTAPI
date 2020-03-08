@@ -20,6 +20,16 @@ class DBConnector{
     return connection;
   }
 
+  static async executeQuery(query){
+    let result;
+    try{
+      result = await this.pool.query(query, queryParameters);
+    }catch(error){
+      throw new Exceptions.ConnectionException('An error ocurred while executing query to DB');
+    }
+    return result;
+  }
+
   static closeConnection(connection){
     connection.release();
   }
