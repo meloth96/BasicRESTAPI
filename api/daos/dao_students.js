@@ -4,7 +4,7 @@ const Student = require('../models/student');
 
 class StudentsDAO{
 
-  addStudent(student){
+  async addStudent(student){
     let connection;
     let addedStudent;
     let result;
@@ -27,7 +27,7 @@ class StudentsDAO{
     return addedStudent;
   }
 
-  listStudents(){
+  async listStudents(){
     let connection;
     let students;
     try{
@@ -54,7 +54,7 @@ class StudentsDAO{
     return students;
   }
 
-  getStudentByID(id){
+  async getStudentByID(id){
     let connection;
     let student;
     try{
