@@ -15,7 +15,7 @@ class DBConnector{
       connection = await this.pool.connect();
     }catch(error){
       connection.release();
-      throw new Exceptions.ConnectorException('Could not retrieve a client connection from pool');
+      throw new Exceptions.ConnectionException('Could not retrieve a client connection from pool');
     }
     return connection;
   }
