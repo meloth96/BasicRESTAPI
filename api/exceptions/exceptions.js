@@ -1,5 +1,5 @@
 module.exports = {
-  DaoStudentException: class DaoStudentException extends Error{
+  StudentDAOException: class StudentDAOException extends Error{
     constructor(message){
       this.message = message;
     }
