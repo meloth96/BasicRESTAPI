@@ -11,7 +11,7 @@ class StudentsManager{
     try{
       if(name.length > 0 && code > 0){
         student = new Student(name, code);
-        addedStudent = await studentsDAO.addStudent(student);
+        addedStudent = await this.studentsDAO.addStudent(student);
       }else{
         addedStudent = false;
       }
@@ -29,7 +29,7 @@ class StudentsManager{
   async listStudents(){
     let students;
     try{
-      students = await studentsDAO.listStudents();
+      students = await this.studentsDAO.listStudents();
     }catch(error){
       if(error instanceof Exceptions.StudentDAOException){
         throw new Exceptions.StudentsManagerException(error.message + error.constructor.name);
@@ -44,7 +44,7 @@ class StudentsManager{
   async getStudentByID(id){
     let student;
     try{
-      student = studentsDAO.getStudentByID(id);
+      student = this.studentsDAO.getStudentByID(id);
     }catch(error){
       if(error instanceof Exceptions.StudentDAOException){
         throw new Exceptions.StudentsManagerException(error.message + error.constructor.name);
