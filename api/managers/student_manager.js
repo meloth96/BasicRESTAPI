@@ -3,7 +3,7 @@ const StudentsDAO = require('../daos/dao_students');
 const Exceptions = require('../exceptions/exceptions');
 
 class StudentsManager{
-  static studentsDAO = new StudentsDAO();
+  studentsDAO = new StudentsDAO();
 
   async addStudent(name, code){
     let student;
