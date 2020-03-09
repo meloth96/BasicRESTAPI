@@ -80,3 +80,5 @@ class StudentsDAO{
     return student;
   }
 }
+
+module.exports = StudentsDAO;
