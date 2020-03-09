@@ -44,7 +44,7 @@ class StudentsManager{
   async getStudentByID(id){
     let student;
     try{
-      student = this.studentsDAO.getStudentByID(id);
+      student = await this.studentsDAO.getStudentByID(id);
     }catch(error){
       if(error instanceof Exceptions.StudentDAOException){
         throw new Exceptions.StudentsManagerException(error.message + error.constructor.name);
