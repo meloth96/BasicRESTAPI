@@ -11,9 +11,9 @@ router.get('/', async (req, res, next) => {
     res.status(200).json(students);
   }catch(error){
     if(error instanceof Exceptions.StudentsManagerException){
-      res.status(500);
+      res.status(500).json();
     }else{
-      res.status(500);
+      res.status(500).json();
     }
   }
 });
@@ -25,13 +25,13 @@ router.get('/:idStudent', async (req, res, next) => {
     if(student != undefined){
       res.status(200).json(student);
     }else{
-      res.status(404);
+      res.status(404).json();
     }
   }catch(error){
     if(error instanceof Exceptions.StudentsManagerException){
-      res.status(500);
+      res.status(500).json();
     }else{
-      res.status(500);
+      res.status(500).json();
     }
   }
 });
@@ -39,7 +39,7 @@ router.get('/:idStudent', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try{
     if(await studentsManager.addStudent(req.params.name, req.params.code)){
-      res.status(201);
+      res.status(201).json();
     }else{
 
     }
