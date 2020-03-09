@@ -53,4 +53,21 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.put('/:idStudent', async (req, res, next) => {
+  try{
+    if(await studentsManager.updateStudent(req.body.name, req.body.code, req.params.idStudent)){
+      res.status(200).json();
+    }else{
+      console.log('error');
+    }
+  }catch(error){
+    console.log(error);
+    if(error instanceof Exceptions.StudentsManagerException){
+      res.status(500).json(error);
+    }else{
+      console.log(error);
+    }
+  }
+});
+
 module.exports = router;

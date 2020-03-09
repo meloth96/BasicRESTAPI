@@ -56,6 +56,29 @@ class StudentsManager{
     return student;
   }
 
+  async updateStudent(name, code, id){
+    let student;
+    let updatedStudent;
+    try{
+      student = await this.getStudentByID(id);
+      if(student != undefined){
+        student.setName(name);
+        student.setCode(code);
+        updatedStudent = await this.studentsDAO.updateStudent(student);
+      }else{
+        updatedStudent = false;
+      }
+    }catch(error){
+      if(error instanceof Exceptions.StudentDAOException){
+        throw new Exceptions.StudentsManagerException(error.message + error.constructor.name);
+      }else{
+        throw new Exceptions.StudentsManagerException('An unexpected error ' +
+                  'ocurred while updating student with id ' + id);
+      }
+    }
+    return updatedStudent;
+  }
+
 }
 
 module.exports = StudentsManager;

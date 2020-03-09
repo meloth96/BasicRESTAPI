@@ -81,6 +81,28 @@ class StudentsDAO{
     }
     return student;
   }
+
+  async updateStudent(student){
+    let connection;
+    let updatedStudent;
+    let result;
+    try{
+      connection = await DBConnector.getConnection();
+      result = await connection.query('UPDATE "REST".students SET name = $1, ' +
+          'code = $2 WHERE id = $3', [student.name, student.code, student.id]);
+      updatedStudent = result.rowCount == 1;
+    }catch(error){
+      if(error instanceof Exceptions.ConnectionException){
+        throw new Exceptions.StudentDAOException(error.message);
+      }else{
+        throw new Exceptions.StudentDAOException('An error ocurred while ' +
+                  'updating student with id ' + id + ' ' + error.message);
+      }
+    }finally{
+      DBConnector.closeConnection(connection);
+    }
+    return updatedStudent;
+  }
 }
 
 module.exports = StudentsDAO;
