@@ -1,4 +1,4 @@
-const DBConnector = require('../dbconnector/dbconnector');
+const DBConnector = require('../dbconnector/connector');
 const Exceptions = require('../exceptions/exceptions');
 const Student = require('../models/student');
 
