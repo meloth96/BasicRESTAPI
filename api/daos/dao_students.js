@@ -1,6 +1,7 @@
 const DBConnector = require('../dbconnector/connector');
 const Exceptions = require('../exceptions/exceptions');
 const Student = require('../models/student');
+const Constants = require('../util/constants');
 
 class StudentsDAO{
 
@@ -15,10 +16,11 @@ class StudentsDAO{
       addedStudent = result.rowCount == 1;
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new Exceptions.StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message, error.errorCode);
       }else{
         throw new Exceptions.StudentDAOException('An error ocurred while ' +
-                  'adding student ' + student.name + ' to DB.' + error.message);
+                  'adding student ' + student.name + ' to DB.' + error.message,
+                            Constants.ERROR_CODES.QUERY_EXECUTION_ERROR);
       }
     }
     finally{
@@ -44,10 +46,11 @@ class StudentsDAO{
       }
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new Exceptions.StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message, error.errorCode);
       }else{
         throw new Exceptions.StudentDAOException('An error ocurred while ' +
-                  'listing students from DB' + error.message);
+                  'listing students from DB' + error.message,
+                            Constants.ERROR_CODES.QUERY_EXECUTION_ERROR);
       }
     }finally{
       DBConnector.closeConnection(connection);
@@ -71,10 +74,11 @@ class StudentsDAO{
       }
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new Exceptions.StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message, error.errorCode);
       }else{
         throw new Exceptions.StudentDAOException('An error ocurred while ' +
-                  'getting student with id ' + id + ' from DB' + error.message);
+                  'getting student with id ' + id + ' from DB' + error.message,
+                            Constants.ERROR_CODES.QUERY_EXECUTION_ERROR);
       }
     }finally{
       DBConnector.closeConnection(connection);
@@ -93,10 +97,11 @@ class StudentsDAO{
       updatedStudent = result.rowCount == 1;
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new Exceptions.StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message, error.errorCode);
       }else{
         throw new Exceptions.StudentDAOException('An error ocurred while ' +
-                  'updating student with id ' + id + ' ' + error.message);
+                  'updating student with id ' + id + ' ' + error.message,
+                            Constants.ERROR_CODES.QUERY_EXECUTION_ERROR);
       }
     }finally{
       DBConnector.closeConnection(connection);
