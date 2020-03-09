@@ -41,9 +41,10 @@ router.post('/', async (req, res, next) => {
     if(await studentsManager.addStudent(req.body.name, req.body.code)){
       res.status(201).json();
     }else{
-
+      res.status(500).json();
     }
   }catch(error){
+    console.log(error);
     if(error instanceof Exceptions.StudentsManagerException){
       res.status(500).json(error);
     }else{
