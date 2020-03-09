@@ -11,5 +11,12 @@ module.exports = {
       super(message);
       this.message = message;
     }
+  },
+  
+  StudentsManagerException: class StudentsManagerException extends Error{
+    constructor(message){
+      super(message);
+      this.message = message;
+    }
   }
 }
