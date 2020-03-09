@@ -30,8 +30,9 @@ class StudentsDAO{
   async listStudents(){
     let connection;
     let students;
+    let result;
     try{
-      connection = DBConnector.getConnection();
+      connection = await DBConnector.getConnection();
       result = await connection.query('SELECT * FROM "REST".students');
       if(result.rowCount > 0){
         students = [];
@@ -57,8 +58,9 @@ class StudentsDAO{
   async getStudentByID(id){
     let connection;
     let student;
+    let result;
     try{
-      connection = DBConnector.getConnection();
+      connection = await DBConnector.getConnection();
       result = await connection.query('SELECT * FROM "REST".students WHERE ' +
                   'id = $1', [id]);
       if(result.rowCount == 1){
