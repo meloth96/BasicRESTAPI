@@ -15,10 +15,10 @@ class StudentsDAO{
       addedStudent = result.rowCount == 1;
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message);
       }else{
-        throw new StudentDAOException('An error ocurred while adding ' +
-                  'student ' + student.name + ' to DB.' + error.message);
+        throw new Exceptions.StudentDAOException('An error ocurred while ' +
+                  'adding student ' + student.name + ' to DB.' + error.message);
       }
     }
     finally{
@@ -43,10 +43,10 @@ class StudentsDAO{
       }
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message);
       }else{
-        throw new StudentDAOException('An error ocurred while listing ' +
-                  'students from DB' + error.message);
+        throw new Exceptions.StudentDAOException('An error ocurred while ' +
+                  'listing students from DB' + error.message);
       }
     }finally{
       DBConnector.closeConnection(connection);
@@ -69,10 +69,10 @@ class StudentsDAO{
       }
     }catch(error){
       if(error instanceof Exceptions.ConnectionException){
-        throw new StudentDAOException(error.message);
+        throw new Exceptions.StudentDAOException(error.message);
       }else{
-        throw new StudentDAOException('An error ocurred while getting ' +
-                  'student with id ' + id + ' from DB' + error.message);
+        throw new Exceptions.StudentDAOException('An error ocurred while ' +
+                  'getting student with id ' + id + ' from DB' + error.message);
       }
     }finally{
       DBConnector.closeConnection(connection);
