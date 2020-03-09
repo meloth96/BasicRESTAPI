@@ -38,7 +38,7 @@ router.get('/:idStudent', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
-    if(await studentsManager.addStudent(req.params.name, req.params.code)){
+    if(await studentsManager.addStudent(req.body.name, req.body.code)){
       res.status(201).json();
     }else{
 
