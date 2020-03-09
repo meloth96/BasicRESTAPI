@@ -1,7 +1,8 @@
 class Student{
-  constructor(name, code){
+  constructor(name, code, id = -1){
     this.name = name;
     this.code = code;
+    this.id = id;
   }
 
   setName(name){
@@ -18,6 +19,14 @@ class Student{
 
   getCode(){
     return this.code;
+  }
+
+  setID(id){
+    this.id = id;
+  }
+
+  getID(){
+    return this.id;
   }
 }
 

@@ -37,7 +37,7 @@ class StudentsDAO{
       if(result.rowCount > 0){
         students = [];
         result.rows.forEach((student) => {
-          students.push(new Student(student.name, student.code));
+          students.push(new Student(student.name, student.code, student.id));
         });
       }else{
         students = undefined;
