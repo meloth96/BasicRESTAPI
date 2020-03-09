@@ -33,6 +33,10 @@ class DBConnector{
   static closeConnection(connection){
     connection.release();
   }
+
+  static getConnectionCount(){
+    return this.pool.totalCount;
+  }
 }
 
 module.exports = DBConnector;
