@@ -65,7 +65,7 @@ class StudentsDAO{
                   'id = $1', [id]);
       if(result.rowCount == 1){
         student = result.rows[0];
-        student = new Student(student.name, student.code);
+        student = new Student(student.name, student.code, student.id);
       }else{
         student = undefined;
       }
